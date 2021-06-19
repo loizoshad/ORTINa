@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <node pkg="tf" type="static_transform_publisher" name="uwb_anchor_0x6e30" args="-0.345296 0.022235  2.139182 0 0 0 1 map uwb_anchor_0 100" /> <!-- 0 -->
+  <node pkg="tf" type="static_transform_publisher" name="uwb_anchor_0x6e43" args="0.210963  2.940959  3.0 0 0 0 1 map uwb_anchor_1 100" /> <!-- 1 -->
+  <node pkg="tf" type="static_transform_publisher" name="uwb_anchor_0x6e46" args="4.031500  -0.070944 2.675591 0 0 0 1 map uwb_anchor_2 100" /> <!-- 2 -->
+  <node pkg="tf" type="static_transform_publisher" name="uwb_anchor_0x6e49" args="9.995051  2.770610  2.422272 0 0 0 1 map uwb_anchor_3 100" /> <!-- 3 -->
+  <node pkg="tf" type="static_transform_publisher" name="uwb_anchor_0x6e52" args="8.551760  -0.693485 2.308465 0 0 0 1 map uwb_anchor_4 100" /> <!-- 4 -->
+  <node pkg="tf" type="static_transform_publisher" name="uwb_anchor_0x6e55" args="11.188900 1.057870  2.031038 0 0 0 1 map uwb_anchor_5 100" /> <!-- 5 -->
+  <node pkg="tf" type="static_transform_publisher" name="uwb_anchor_0x6e58" args="14.338000 1.112870  2.101508 0 0 0 1 map uwb_anchor_6 100" /> <!-- 6 -->
+  <node pkg="tf" type="static_transform_publisher" name="uwb_anchor_0x6e62" args="17.053692 -0.475284 2.614461 0 0 0 1 map uwb_anchor_7 100" /> <!-- 7 -->
+  <node pkg="tf" type="static_transform_publisher" name="uwb_anchor_0x6e65" args="16.645300 4.044180  1.130429 0 0 0 1 map uwb_anchor_8 100" /> <!-- 8 -->
+  <node pkg="tf" type="static_transform_publisher" name="uwb_anchor_0x6e68" args="7.9943230 -4.205842 2.987858 0 0 0 1 map uwb_anchor_9 100" /> <!-- 9 -->
+  <node pkg="tf" type="static_transform_publisher" name="uwb_anchor_0x6e71" args="16.944441 -1.759508 2.69665045 0 0 0 1 map uwb_anchor_10 100" /> <!-- 10 -->
+  <node pkg="tf" type="static_transform_publisher" name="uwb_anchor_0x6e74" args="16.0 0.45 0.35 0 0 0 1 map uwb_anchor_11 100" /> <!-- 11 -->
+  
+    <node pkg="pozyx_simulation" name="pozyx_simulation"  type="uwb_simulation.py" output="screen">
+        <param name="modelstate_index" value="114" />
+    </node>
+
+</launch>

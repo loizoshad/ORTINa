@@ -1,0 +1,14 @@
+material extra_clock_v2/image_1
+{
+    technique
+    {
+        // first pass
+        pass
+        {
+            texture_unit 
+            {
+                texture Uhr_ohne_Zeiger.jpg
+            }
+        }
+    }   
+}

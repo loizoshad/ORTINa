@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="extra_baseball_bat">
+    <static>true</static>
+    <link name="link">
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <scale>0.015 0.015 0.015</scale>
+            <uri>model://extra_baseball_bat/meshes/baseball_bat.dae</uri>
+          </mesh>
+  	</geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scipts/gazebo.material</uri>
+            <name>Gazebo/Orange</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>
+

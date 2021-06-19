@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<launch>
+
+    <arg name="map_file" default="$(find ORTILo)/maps/map.yaml"/>
+
+    <!-- Run the map server -->
+    <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+        <rosparam file ="$(find ORTILo)/config/common_costmap_params.yaml" command="load" ns="global_costmap"/>
+        <rosparam file ="$(find ORTILo)/config/common_costmap_params.yaml" command="load" ns="local_costmap"/>
+        <rosparam file ="$(find ORTILo)/config/global_costmap_params.yaml" command="load" />
+        <rosparam file ="$(find ORTILo)/config/local_costmap_params.yaml" command="load" />        
+        <param name="global_costmap/width" value="100.0"/>
+        <param name="global_costmap/height" value="100.0"/>
+        <param name="global_costmap/global_frame" value="map"/>
+        <param name="global_costmap/robot_base_frame" value="base_link"/>
+    </node>
+
+    <!--args=" x y z yaw pitch roll-->
+    <node pkg="tf" type="static_transform_publisher" name="link1_broadcaster" args="0 0 0 0 0 0 world map 100" />
+    <node pkg="tf" type="static_transform_publisher" name="link2_broadcaster" args="0 0 0 0 0 0 map base_link 100" />  
+
+</launch>

@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="extra_plant">
+    <static>true</static>
+    <link name="link">
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <scale>0.15 0.15 0.15</scale>
+            <uri>model://extra_plant/meshes/indoor plant_02.dae</uri>
+          </mesh>
+  	    </geometry>
+        <material>
+          <script>
+            <uri>model://extra_plant/materials/scripts</uri>
+            <uri>model://extra_plant/materials/textures</uri>
+            <name>extra_plant/image_1</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>
+

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+<!--
+Before you run this launch file make sure to set the environment variable "TURTLEBOT3_MODEL in the same terminal
+This can be achieved by executing the following export command 
+"export TURTLEBOT3_MODEL="name of the model you want to assign (e.g. burger, waffle, waffle_pi)"
+
+Make sure that the model you choose is the same with the model set in this launch file.
+-->
+
+<launch>
+  <arg name="world_name" default="basic"/>
+  <arg name="turtlebot3_model" default="burger" doc="model type [burger, waffle, waffle_pi]"/>
+  <arg name="x_pos" default="0.0"/>
+  <arg name="y_pos" default="0.0"/>
+  <arg name="z_pos" default="0.0"/>  
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find ORTILo)/worlds/latest.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="gui" value="true"/>    
+    <arg name="verbose" value="true"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>    
+  </include>
+
+
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_$(arg turtlebot3_model).urdf.xacro" />
+
+  <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf"  args="-urdf -model turtlebot3_$(arg turtlebot3_model) -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -param robot_description" />
+
+  <include file="$(find turtlebot3_slam)/launch/turtlebot3_slam.launch"/>
+
+  <include file="$(find turtlebot3_teleop)/launch/turtlebot3_teleop_key.launch"/>
+
+
+</launch>
+
+
+
+

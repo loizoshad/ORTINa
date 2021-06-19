@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <arg name="world_name" default="basic"/> 
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find ORTILo)/worlds/demo_world.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="gui" value="true"/>    
+    <arg name="verbose" value="true"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>    
+  </include>
+
+</launch>
+
+

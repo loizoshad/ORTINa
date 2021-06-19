@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<launch>
+
+    <!--Launch Gazebo, initialize the environment, Spawn the Quadrotor, and the quadrotor controllers-->
+    <include file="$(find ORTILo)/launch/spawn_quadrotor.launch"/>
+
+    <!-- Run the map server -->
+    <include file="$(find ORTILo)/launch/map_server_init.launch"/>
+   
+    <!-- Path smoothing-->
+    <include file="$(find ORTILo)/launch/path_smoothing.launch"/>
+
+    <!-- Kalman Filter --> 
+    <node pkg="ORTILo" name="kalmanFilter" type="kalmanFilter.py" output="screen"/>
+
+</launch>

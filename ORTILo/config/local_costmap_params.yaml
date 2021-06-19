@@ -1,0 +1,16 @@
+# This file was created under the guidance of the tutorial:
+# https://wiki.ros.org/navigation/Tutorials/RobotSetup#Costmap_Configuration_.28local_costmap.29_.26_.28global_costmap.29
+
+local_costmap:
+  global_frame: map
+  robot_base_frame: base_link
+  update_frequency: 5.0
+  publish_frequency: 0.5
+  static_map: false
+  rolling_window: true
+  transform_tolerance: 0.5
+  width: 50.0
+  height: 12.0
+  resolution: 0.05
+  origin_x: 0.0
+  origin_y: 0.0

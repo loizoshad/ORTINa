@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="extra_office_chair_v2">
+    <static>true</static>
+    <link name="link">
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <scale>0.0025 0.0025 0.0025</scale>
+            <uri>model://extra_office_chair_v2/meshes/OfficeChair.dae</uri>
+          </mesh>
+	</geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/DarkGrey</name>
+            </script>
+         </material>
+      </visual>
+    </link>
+  </model>
+</sdf>
+

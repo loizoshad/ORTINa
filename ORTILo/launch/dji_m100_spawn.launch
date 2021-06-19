@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+
+<launch>
+  <arg name="name" default="dji_m100"/>
+  <arg name="model" default="$(find dji_m100_description)/urdf/dji_m100.urdf.xacro"/>
+  <arg name="tf_prefix" default="$(optenv ROS_NAMESPACE)"/>
+  <arg name="is_rotors_controlled" default="false"/>
+
+  <arg name="is_hitl_model" default="true"/>
+  <arg name="is_collision_enabled" default="false"/>
+
+  <arg name="x" default="0.0"/>
+  <arg name="y" default="0.0"/>
+  <arg name="z" default="0.08"/>
+  <arg name="yaw" default="0.0"/>
+
+  <arg name="world_frame" default="/world"/>
+  <arg name="base_link_frame" default="$(arg tf_prefix)/base_link"/>
+  <rosparam param="camera/dji_sdk/image_raw/disable_pub_plugins">
+      - 'image_transport/compressedDepth'
+      - 'image_transport/theora'
+  </rosparam>
+  <arg name="gazebo_major_version" value="$(eval optenv('GAZEBO_MAJOR_VERSION', 9.0))"/>
+  <arg name="complex_visualization_supported" value="$(eval arg('gazebo_major_version') > 7 )"/>
+  <param name="robot_description"
+          command="$(find xacro)/xacro '$(arg model)'
+                      world_frame:=$(arg world_frame)
+                      robot_namespace:=$(arg name)
+                      hitl_model:=$(arg is_hitl_model)
+                      collision_enabled:=$(arg is_collision_enabled)
+                      rotors_controlled:=$(arg is_rotors_controlled)
+                      complex_visualization_supported:=$(arg complex_visualization_supported)"/>
+
+  <!-- send the robot XML to param server -->
+  <param name="tf_prefix" type="string" value="$(arg tf_prefix)" />
+  <param name="base_link_frame" type="string" value="$(arg base_link_frame)"/>
+  <param name="world_frame" type="string" value="$(arg world_frame)"/>
+
+  <!-- push robot_description to factory and spawn robot in gazebo -->
+  <node name="spawn_robot" pkg="gazebo_ros" type="spawn_model"
+        args="-param robot_description
+           -urdf
+           -x $(arg x)
+           -y $(arg y)
+           -z $(arg z)
+           -Y $(arg yaw)
+           -model $(arg name)"
+        respawn="false" output="screen"/>
+
+  <!-- start robot state publisher -->
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen" >
+    <param name="publish_frequency" type="double" value="50.0" />
+  </node>
+
+  <!-- publish state and tf -->
+  <node name="ground_truth_to_tf" pkg="message_to_tf" type="message_to_tf" output="screen">
+    <param name="odometry_topic" value="/$(arg name)/odometry" />
+    <param name="frame_id" value="$(arg world_frame)" />
+    <param name="tf_prefix" value="$(arg tf_prefix)"/>
+    <remap from="ground_truth_to_tf/pose" to="pose"/>
+  </node>
+  <group unless="$(arg is_hitl_model)">
+
+    <!-- Load Gimbal Controllers to ROSparam server -->
+    <rosparam command="load" file="$(find dji_m100_controllers_gazebo)/config/gimbal_controllers.yaml" />
+    <group if="$(arg is_rotors_controlled)">
+
+      <!-- Spawn Gimbal Controller -->
+      <node name="gimbal_controller_spawner" pkg="controller_manager" type="spawner"
+          respawn="false" output="screen" ns="/$(arg name)"
+          args="--namespace=/$(arg name)
+              joint_state_controller
+              gimbal_roll_controller
+              gimbal_pitch_controller
+              gimbal_yaw_controller
+              --timeout 20">
+      </node>
+    </group>
+    <group unless="$(arg is_rotors_controlled)">
+      <rosparam command="load" file="$(find dji_m100_controllers_gazebo)/config/body_controllers.yaml" />
+      <rosparam command="load" file="$(find dji_m100_controllers_gazebo)/config/body_params.yaml" />
+      <!-- Spawn Body + Gimbal Controllers -->
+      <node name="unified_controller_spawner" pkg="controller_manager" type="spawner"
+          respawn="false" output="screen" ns="/$(arg name)"
+          args="--namespace=/$(arg name)
+              joint_state_controller
+              gimbal_roll_controller
+              gimbal_pitch_controller
+              gimbal_yaw_controller
+              body_position_controller
+              body_velocity_controller
+              body_attitude_controller
+              --timeout 20">
+      </node>
+      <!-- load actions -->
+      <include file="$(find hector_quadrotor_actions)/launch/actions.launch" />
+      <node name="trajectory_controller" pkg="starmac" type="trajectory_controller" respawn="false" output="screen"/>
+    </group>
+  </group>
+</launch>
+

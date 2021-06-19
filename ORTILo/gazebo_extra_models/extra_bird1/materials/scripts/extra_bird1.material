@@ -1,0 +1,15 @@
+material extra_bird1/image_1
+{
+    technique
+    {
+        // first pass
+        pass
+        {
+            // Texture unit 0
+            texture_unit 
+            {
+                texture 12259_bird_diffuse.jpg
+            }
+        }
+    }   
+}

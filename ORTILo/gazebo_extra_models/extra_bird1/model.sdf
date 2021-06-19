@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="extra_bird1">
+    <static>true</static>
+    <link name="link">
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <scale>0.02 0.02 0.02</scale>
+            <uri>model://extra_bird1/meshes/12259_Bird_v1_L2.dae</uri>
+          </mesh>
+  	    </geometry>
+        <material>
+          <script>
+            <uri>model://extra_bird1/materials/scripts</uri>
+            <uri>model://extra_bird1/materials/textures</uri>
+            <name>extra_bird1/image_1</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>
+

@@ -1,0 +1,13 @@
+#Goal
+
+nav_msgs/Path goal
+
+---
+#result
+
+string status
+
+---
+#feedback
+
+std_msgs/Float64 error

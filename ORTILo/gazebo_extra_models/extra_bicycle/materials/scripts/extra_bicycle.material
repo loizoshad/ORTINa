@@ -1,0 +1,15 @@
+material extra_bicycle/image_1
+{
+    technique
+    {
+        // first pass
+        pass
+        {
+            // Texture unit 0
+            texture_unit 
+            {
+                texture 10489_bicycle_diffuse.jpg
+            }
+        }
+    }   
+}

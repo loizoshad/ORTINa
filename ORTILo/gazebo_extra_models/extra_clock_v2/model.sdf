@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="extra_clock_v2">
+    <static>true</static>
+    <link name="link">
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <scale>1.20 1.20 1.20</scale>
+            <uri>model://extra_clock_v2/meshes/clock_dae.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://extra_clock_v2/materials/scripts</uri>
+            <uri>model://extra_clock_v2/materials/textures</uri>
+            <name>extra_clock_v2/image_1</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>

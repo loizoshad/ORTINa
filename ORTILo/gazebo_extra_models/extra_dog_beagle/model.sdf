@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="extra_dog_beagle">
+    <static>true</static>
+    <link name="link">
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <scale>0.1 0.1 0.1</scale>
+            <uri>model://extra_dog_beagle/meshes/Beagle.stl</uri>
+          </mesh>
+  	</geometry>
+	<material>
+	  <script>
+	    <uri>file://media/materials/scipts/gazebo.material</uri>
+	    <name>Gazebo/DarkGrey</name>
+	  </script>
+	</material>
+      </visual>
+    </link>
+  </model>
+</sdf>
+

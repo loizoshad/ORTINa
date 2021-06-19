@@ -1,0 +1,15 @@
+material extra_plant/image_1
+{
+    technique
+    {
+        // first pass
+        pass
+        {
+            // Texture unit 0
+            texture_unit 
+            {
+                texture indoor_plant_2_COL.jpg
+            }
+        }
+    }   
+}
