@@ -9,7 +9,7 @@ This README would normally document whatever steps are necessary to get your app
 ### Demo ###
 
 * roslaunch simulation.launch
-* roslaunch uwb_anchors_setup.launch (This step is optional. If it is used, the pozyx_simulation is required https://github.com/bekirbostanci/pozyx_simulation.git, otherwise any UWB package can be used, as long as it complies with the message format used in this work.
+* roslaunch uwb_anchors_setup.launch (This step is optional. If it is used, the pozyx_simulation is required https://github.com/bekirbostanci/pozyx_simulation.git , otherwise any UWB package can be used, as long as it complies with the message format used in this work.
 * rosrun ORTILo uwb_position_estimator.py
 * Launch YOLO (In this work the Deepstream 5.0 SDK was used)
 * rosrun ORTILo yolo_objects_parser.py
