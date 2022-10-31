@@ -31,10 +31,10 @@ We propose a multisensor fusion framework for onboard real-time navigation of a 
 
 ## Authors
 
-Loizos Hadjiloizou
-Kyriakos M. Deliparaschos
-Evagoras Makridis
-Themistoklis Charalambous
+* Loizos Hadjiloizou
+* Kyriakos M. Deliparaschos
+* Evagoras Makridis
+* Themistoklis Charalambous
 
 ## License
 
