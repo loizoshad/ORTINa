@@ -42,7 +42,7 @@ If you use our code or data in your work, please cite our research paper:
 
 A demonstration of one full test is provided here
 
-https://user-images.githubusercontent.com/92587570/199697729-e40b847e-3784-44d3-af1a-7c63216fc134.mp4
+https://www.youtube.com/watch?v=FMaNhJK9KdY
 
 #
 
