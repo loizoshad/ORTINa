@@ -10,8 +10,8 @@ import numpy as np
 import copy
 from collections import namedtuple
 
-from ORTILo.msg import yolov3_bounding_box_vector
-from ORTILo.msg import yolov3_bounding_box
+from ORTINa.msg import yolov3_bounding_box_vector
+from ORTINa.msg import yolov3_bounding_box
 
 
 def talker():

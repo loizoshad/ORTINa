@@ -6,9 +6,9 @@ import numpy as np
 from scipy.optimize import fsolve
 
 from geometry_msgs.msg import PoseStamped
-from ORTILo.msg import yolov3_bounding_box_vector
-from ORTILo.msg import yolov3_bounding_box
-from ORTILo.msg import StateVector
+from ORTINa.msg import yolov3_bounding_box_vector
+from ORTINa.msg import yolov3_bounding_box
+from ORTINa.msg import StateVector
 
 class CameraPoseEstimator:
 	def __init__(self):

@@ -14,8 +14,8 @@ Best performance so far for the xyz_controller
 #include <nav_msgs/Odometry.h>
 #include <mav_msgs/Actuators.h>
 #include <sensor_msgs/Imu.h>
-#include <ORTILo/StateVector.h>
-#include <ORTILo/ControlVector.h>
+#include <ORTINa/StateVector.h>
+#include <ORTINa/ControlVector.h>
 #include <Eigen/Core>
 
 namespace lq_servo
@@ -28,7 +28,7 @@ class LQServoController
         LQServoController();
 
         // Callback functions
-        void estimatedStateCallback(const ORTILo::StateVectorConstPtr &msg);
+        void estimatedStateCallback(const ORTINa::StateVectorConstPtr &msg);
         void commandedPoseCallback(const geometry_msgs::PoseStampedConstPtr &msg);
 
         void outputCallback(const geometry_msgs::PoseStampedConstPtr &msg);
@@ -61,10 +61,10 @@ class LQServoController
     
         geometry_msgs::PoseStamped commanded_pose;
         geometry_msgs::PoseStamped plant_output;
-        ORTILo::StateVector estimated_state;
+        ORTINa::StateVector estimated_state;
         geometry_msgs::PoseStamped single_desired_position;
         mav_msgs::Actuators motor_speeds;
-        ORTILo::ControlVector control_vector;
+        ORTINa::ControlVector control_vector;
 
 		static const uint8_t row_L = 4;
 		static const uint8_t row_X = 12;

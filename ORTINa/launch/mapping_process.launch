@@ -16,7 +16,7 @@ Make sure that the model you choose is the same with the model set in this launc
   <arg name="z_pos" default="0.0"/>  
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find ORTILo)/worlds/latest.world"/>
+    <arg name="world_name" value="$(find ORTINa)/worlds/latest.world"/>
     <arg name="paused" value="false"/>
     <arg name="gui" value="true"/>    
     <arg name="verbose" value="true"/>

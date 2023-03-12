@@ -7,7 +7,7 @@ from scipy.optimize import fsolve
 
 from geometry_msgs.msg import PoseStamped
 from pozyx_simulation.msg import uwb_data
-from ORTILo.msg import StateVector
+from ORTINa.msg import StateVector
 
 class UwbPoseEstimator:
     def __init__(self):

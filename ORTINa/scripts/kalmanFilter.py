@@ -10,8 +10,8 @@ import matplotlib.pyplot as plt
 from geometry_msgs.msg import PoseStamped
 from sensor_msgs.msg import Imu
 from mav_msgs.msg import Actuators
-from ORTILo.msg import ControlVector
-from ORTILo.msg import StateVector
+from ORTINa.msg import ControlVector
+from ORTINa.msg import StateVector
 from nav_msgs.msg import Odometry
 from tf.transformations import euler_from_quaternion, quaternion_from_euler
 

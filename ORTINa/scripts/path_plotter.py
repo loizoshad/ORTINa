@@ -6,7 +6,7 @@ import numpy as np
 import rospy
 from geometry_msgs.msg import PoseStamped
 from nav_msgs.msg import Path
-from ORTILo.msg import StateVector
+from ORTINa.msg import StateVector
 import csv
 
 class DataPlotter:

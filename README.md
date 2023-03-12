@@ -1,6 +1,6 @@
-# ORTILo: Onboard Real-Time Multi-Sensor Pose Estimation for Indoor Quadrotor Navigation with Intermittent Communication
+# ORTINa: Onboard Real-Time Multi-Sensor Pose Estimation for Indoor Quadrotor Navigation with Intermittent Communication
 
-This repository contains the source-code developed and used to generate all the results in the research paper ORTILo
+This repository contains the source-code developed and used to generate all the results in the research paper ORTINa
 
 If you use our code or data in your work, please cite our research paper:
 
@@ -19,7 +19,7 @@ If you use our code or data in your work, please cite our research paper:
 
 ### Simulation Environment
 
-* Add to $GAZEBO_MODEL_PATH the path to the extra models: "ORTILo/gazebo_extra_models"
+* Add to $GAZEBO_MODEL_PATH the path to the extra models: "ORTINa/gazebo_extra_models"
 
 ### Dependencies
 
@@ -34,10 +34,10 @@ If you use our code or data in your work, please cite our research paper:
 
 * roslaunch simulation.launch
 * roslaunch uwb_anchors_setup.launch 
-* rosrun ORTILo uwb_position_estimator.py
+* rosrun ORTINa uwb_position_estimator.py
 * Launch the YOLO algorithm
-* rosrun ORTILo yolo_objects_parser.py
-* rosrun ORTILo yolo_position_estimator.py
+* rosrun ORTINa yolo_objects_parser.py
+* rosrun ORTINa yolo_position_estimator.py
 * Use the "/lqi/command/single_pose" and "move_base_simple/goal" topics to command the quadrotor.
 
 A demonstration of one full test is provided here

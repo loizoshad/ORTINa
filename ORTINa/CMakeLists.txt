@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(ORTILo)
+project(ORTINa)
 
 
 find_package(catkin REQUIRED COMPONENTS
@@ -44,7 +44,7 @@ nav_msgs
 
 catkin_package(
 INCLUDE_DIRS include
-LIBRARIES ORTILo lq_servo
+LIBRARIES ORTINa lq_servo
 CATKIN_DEPENDS path_smoothing_ros uwb_driver dji_m100_controllers_gazebo dji_m100_description dji_m100_gazebo geometry_msgs roscpp rospy std_msgs mav_msgs move_base nav_msgs actionlib actionlib_msgs message_generation message_runtime
 #CATKIN_DEPENDS darknet_ros darknet_ros_msgs dji_m100_controllers_gazebo dji_m100_description dji_m100_gazebo geometry_msgs roscpp rospy std_msgs mav_msgs move_base nav_msgs actionlib actionlib_msgs message_generation
 #DEPENDS system_lib
@@ -115,7 +115,7 @@ install(
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_ORTILo.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_ORTINa.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

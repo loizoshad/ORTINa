@@ -2,7 +2,7 @@
 Best performance so far for the xyz controller
 */
 
-#include <ORTILo/lq_servo.h>
+#include <ORTINa/lq_servo.h>
 
 namespace lq_servo
 {
@@ -20,7 +20,7 @@ namespace lq_servo
 		velocity_sub = nh.subscribe("/uav1/odometry", 1, &LQServoController::odometryCallback, this); // 'X:velocities'
 		single_pose_sub = nh.subscribe("/lqi/command/single_pose", 1, &LQServoController::singlePoseCallback, this); // 'r'
 
-		command_pub = nh.advertise<ORTILo::ControlVector>("/control_input", 1); // 'U:[thrust, tau_x, tau_y, tau_z]'
+		command_pub = nh.advertise<ORTINa::ControlVector>("/control_input", 1); // 'U:[thrust, tau_x, tau_y, tau_z]'
 		motor_speeds_pub = nh.advertise<mav_msgs::Actuators>("/uav1/command/motor_speed", 1); // 'U*:[m0, m1, m2, m3, m4]'
 		
 		// Set size of the motor_speeds vector
@@ -32,7 +32,7 @@ namespace lq_servo
 		printf("All publishers and subscribers have been succesfully initialized\n");	
 	}
 
-	void LQServoController::estimatedStateCallback(const ORTILo::StateVectorConstPtr &msg)
+	void LQServoController::estimatedStateCallback(const ORTINa::StateVectorConstPtr &msg)
 	{
 		estimated_state.x = msg->x;
 		estimated_state.y = msg->y;

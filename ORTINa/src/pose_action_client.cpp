@@ -1,7 +1,7 @@
 #include "ros/ros.h"
 
-#include "ORTILo/PoseAction.h"
-#include "ORTILo/PoseActionGoal.h"
+#include "ORTINa/PoseAction.h"
+#include "ORTINa/PoseActionGoal.h"
 
 #include "std_msgs/Float64.h"
 #include "std_msgs/String.h"
@@ -37,9 +37,9 @@ protected:
 
 
 template<>
-void PublisherSubscriber<ORTILo::PoseActionGoal, nav_msgs::Path>::subscriberCallback(const nav_msgs::Path::ConstPtr& msg)
+void PublisherSubscriber<ORTINa::PoseActionGoal, nav_msgs::Path>::subscriberCallback(const nav_msgs::Path::ConstPtr& msg)
 {
-	ORTILo::PoseActionGoal goal;
+	ORTINa::PoseActionGoal goal;
 	goal.goal.goal.poses = msg->poses;
 	publisherObject.publish(goal);
 }
@@ -51,7 +51,7 @@ int main(int argc, char **argv)
 
   ros::NodeHandle n;
 
-  PublisherSubscriber<ORTILo::PoseActionGoal, nav_msgs::Path> topic_converter("/pose_action/goal", "/smoothedPath", 1);
+  PublisherSubscriber<ORTINa::PoseActionGoal, nav_msgs::Path> topic_converter("/pose_action/goal", "/smoothedPath", 1);
   
   ros::spin();
 

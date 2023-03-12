@@ -1,4 +1,4 @@
-#include <ORTILo/lq_servo.h>
+#include <ORTINa/lq_servo.h>
 
 using namespace lq_servo;
 

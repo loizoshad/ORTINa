@@ -1,13 +1,13 @@
 #include "ros/ros.h"
 #include "actionlib/server/simple_action_server.h"
-#include "ORTILo/PoseAction.h"
+#include "ORTINa/PoseAction.h"
 
 #include "std_msgs/Float64.h"
 #include "std_msgs/String.h"
 #include "nav_msgs/Path.h"
 #include "geometry_msgs/PoseStamped.h"
 #include "geometry_msgs/Pose.h"
-#include <ORTILo/StateVector.h>
+#include <ORTINa/StateVector.h>
 
 #include <iostream>
 //#include "math.h"
@@ -18,18 +18,18 @@ class PoseActionServer
 
 protected:
   	ros::NodeHandle n;
-	actionlib::SimpleActionServer<ORTILo::PoseAction> action_server;
+	actionlib::SimpleActionServer<ORTINa::PoseAction> action_server;
 
 	std::string action_name;
-	ORTILo::PoseFeedback feedback;
-	ORTILo::PoseResult result;
+	ORTINa::PoseFeedback feedback;
+	ORTINa::PoseResult result;
 
 	ros::Subscriber actual_pose_sub;
 	ros::Subscriber estimated_state_sub;
 	ros::Subscriber path_plan_sub;
 	ros::Publisher command_pose_pub;
 
-	ORTILo::StateVector estimated_state;
+	ORTINa::StateVector estimated_state;
 	geometry_msgs::Pose current_pose;
 	geometry_msgs::Pose goal_pose;
 	std_msgs::Float64 local_error;
@@ -104,7 +104,7 @@ private:
 	}
 
 
-	void estimatedStateCallback(const ORTILo::StateVectorConstPtr &msg)
+	void estimatedStateCallback(const ORTINa::StateVectorConstPtr &msg)
 	{
 		estimated_state.x = msg->x;
 		estimated_state.y = msg->y;
@@ -119,7 +119,7 @@ private:
 	}
 
 
-	void actionCallback(const ORTILo::PoseGoalConstPtr &msg)
+	void actionCallback(const ORTINa::PoseGoalConstPtr &msg)
 	{
 	
 		ros::Rate rate(100);
